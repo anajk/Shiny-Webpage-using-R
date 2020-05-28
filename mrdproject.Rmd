@@ -1,0 +1,56 @@
+---
+title: "Towed Vehicles in Chicago"
+author: "Ana Jovanova"
+date: "August 19, 2017"
+output: html_document
+---
+<style>
+body {
+text-align: justify}
+</style>
+
+
+
+## The Data
+
+ The Towed vehicles project is a shiny App which loads the dinalicaly updated data for the last 90 days from the Chicago data portal  <https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg> that conatins details for the towed vehicles in Chicago that include  Illegally parked vehicles, abandoned vehicles and vehicles used for illegal activities. As of now, the data set has 5848 rows, but only recods from the last two months are fed into the application. 
+
+**The data** containes 10 variables:
+*Tow Date
+*Make
+*Style
+*Model
+*COlor
+*Plate
+*State
+*Towed to Adress
+*Tow Facility Phone
+*Inventory Number
+
+```{r cars}
+tow <- read.csv("Towed_Vehicles.csv")
+summary(tow)
+```
+
+##The user input
+
+There is one input that controls data displayed the in the three outputs (visualisations). The input is of Date Range type, where the user chooses the date range, by selecting it from a calendar. Initialy, the project is filled with data from *2017-06-10* as staring date.
+
+
+The project is developed using R in order to visualise the data and answer the questions:
+* **Do Vans or Pic Up Trucks are getting towed more often?**, 
+* **Which state(besides Illinois)  are the plates that are being towed coming from?** 
+
+Additionaly, the user has option to search for a value in a rendered table, for example for a specific color, specific licence plate, make... 
+
+
+
+## The output
+
+
+
+
+Beside the rendered table, there are two visualisations, each displayed in a separate tab, showing different aspects.
+In the *"Is it Van or is it Pic Up more likely to be towed"* tab, there is a plot that shows the number of Van style vehicles, versus the number of Pic Up style towed vehicles. As expecetd, the number of towed Van vehicles is significantly bigger then the Pic Up vehicles, probably because they are easier to spot because of their size.
+In the *"Which Vehicles are most towed by state"* tab, doughnut chart is being used to present how big part of the State column belong to a specific state. Ofcourse, Illinois part filled the biggest part, but, again, as expected, the neigbour states like Indiana and Wisconsin are the next parst. There is also a leend that names the the colors by state.
+

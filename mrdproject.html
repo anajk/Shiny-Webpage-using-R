@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid main-container">
+
+
+
+
+
+
+
+
+
+
+
+<div class="fluid-row">
+
+
+
+<h1 class="title toc-ignore">Towed Vehicles in Chicago</h1>
+<h4 class="author"><em>Ana Jovanova</em></h4>
+<h4 class="date"><em>August 19, 2017</em></h4>
+
+</div>
+
+
+
+<div class="section level2">
+<h2>The Data</h2>
+<p>The Towed vehicles project is a shiny App which loads the dinalicaly updated data for the last 90 days from the Chicago data portal <a rel="noopener" href="https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg" class="uri">https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg</a> that conatins details for the towed vehicles in Chicago that include Illegally parked vehicles, abandoned vehicles and vehicles used for illegal activities. As of now, the data set has 5848 rows, but only recods from the last two months are fed into the application.</p>
+<p><strong>The data</strong> containes 10 variables: <em>Tow Date </em>Make <em>Style </em>Model <em>COlor </em>Plate <em>State </em>Towed to Adress <em>Tow Facility Phone </em>Inventory Number</p>
+<pre class="r"><code>tow &lt;- read.csv(&quot;Towed_Vehicles.csv&quot;)
+summary(tow)</code></pre>
+<pre><code>##        Tow.Date         Make          Style          Model     
+##  08/12/2017: 187   CHEV   :1036   4D     :3492          :5665  
+##  08/10/2017: 185   FORD   : 652   LL     :1156   TK     : 279  
+##  08/13/2017: 170   NISS   : 414   VN     : 565   ALT    :  10  
+##  08/09/2017: 159   DODG   : 411   2D     : 395   CAM    :  10  
+##  08/11/2017: 159   PONT   : 388   4T     : 150   COA    :   7  
+##  08/02/2017: 148   HOND   : 356   PK     : 150   IMP    :   7  
+##  (Other)   :5078   (Other):2829   (Other): 178   (Other): 108  
+##      Color           Plate          State     
+##  BLK    :1026           : 819   IL     :5463  
+##  SIL    : 871   Q476580 :   2          : 174  
+##  WHI    : 862   Q836834 :   2   IN     : 145  
+##  GRY    : 791   Z992024 :   2   WI     :  66  
+##  BLU    : 597   00144430:   1   MI     :  26  
+##  RED    : 586   00152003:   1   IA     :  24  
+##  (Other):1353   (Other) :5259   (Other): 188  
+##                                            Towed.to.Address
+##  10300 S. Doty                                     :2976   
+##  400 E. Lower Wacker                               : 101   
+##  701 N. Sacramento                                 :2987   
+##  Chicago O&#39;hare International Airport remote lot E.:  19   
+##  Police Pound                                      :   3   
+##                                                            
+##                                                            
+##       Tow.Facility.Phone Inventory.Number 
+##                :   3     Min.   : 153630  
+##  (312) 744-7550: 101     1st Qu.:2826065  
+##  (312) 746-6350:  19     Median :2828698  
+##  (773) 265-1846: 169     Mean   :4600097  
+##  (773) 265-7605:2818     3rd Qu.:6891377  
+##  (773) 568-8495:2841     Max.   :6894256  
+##  (773) 785-9752: 135</code></pre>
+</div>
+<div class="section level2">
+<h2>The user input</h2>
+<p>There is one input that controls data displayed the in the three outputs (visualisations). The input is of Date Range type, where the user chooses the date range, by selecting it from a calendar. Initialy, the project is filled with data from <em>2017-06-10</em> as staring date.</p>
+<p>The project is developed using R in order to visualise the data and answer the questions: * <strong>Do Vans or Pic Up Trucks are getting towed more often?</strong>, * <strong>Which state(besides Illinois) are the plates that are being towed coming from?</strong></p>
+<p>Additionaly, the user has option to search for a value in a rendered table, for example for a specific color, specific licence plate, make…</p>
+</div>
+<div class="section level2">
+<h2>The output</h2>
+<p>Beside the rendered table, there are two visualisations, each displayed in a separate tab, showing different aspects. In the <em>“Is it Van or is it Pic Up more likely to be towed”</em> tab, there is a plot that shows the number of Van style vehicles, versus the number of Pic Up style towed vehicles. As expecetd, the number of towed Van vehicles is significantly bigger then the Pic Up vehicles, probably because they are easier to spot because of their size. In the <em>“Which Vehicles are most towed by state”</em> tab, doughnut chart is being used to present how big part of the State column belong to a specific state. Ofcourse, Illinois part filled the biggest part, but, again, as expected, the neigbour states like Indiana and Wisconsin are the next parst. There is also a leend that names the the colors by state.</p>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=20.20.4.21309-224 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML','130'); });</script></body></html>
